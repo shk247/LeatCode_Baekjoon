@@ -14,7 +14,21 @@ class Solution:
             if len(answer)<=len(tmp):
                 answer = tmp
                 
-        print(len(answer))
+        return len(answer)
+    
+    def lengthOfLongestSubstring2(self, s: str) -> int:
+        ans = 0 
+        left = 0 
+        used = {}
         
+        for idx, c in enumerate(s):
+            if c in used and left <= used[c]:
+                left = used[c] + 1
+            else:
+                ans = max(ans, idx-left+1)
+            used[c] = idx
+        
+        return ans
+    
 if __name__=='__main__':
-    Solution().lengthOfLongestSubstring("abcabcbb")
+    Solution().lengthOfLongestSubstring3(" ")
