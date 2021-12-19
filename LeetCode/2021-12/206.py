@@ -1,0 +1,35 @@
+from typing import NoReturn, Optional
+
+class ListNode:
+    def __init__(self, val=0, next=None):
+        self.val = val
+        self.next = next
+        
+class Solution:
+    def reverseList(self, head: Optional[ListNode]) -> Optional[ListNode]:
+        ans = None
+        
+        while head:
+            next = head.next
+            head.next = ans
+            ans = head
+            head = next
+            
+        return ans
+    
+    def reverseList2(self, head: Optional[ListNode]) -> Optional[ListNode]:
+        if head == None or head.next == None:
+            return head
+        
+        p = self.reverseList2(head.next)
+        head.next.next = head
+        head.next = None
+        
+        return p
+        
+    
+            
+        
+
+if __name__=='__main__':
+    Solution()
