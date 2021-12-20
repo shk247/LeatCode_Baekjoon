@@ -31,4 +31,4 @@ def solution():
         print(max(nums))
 
 if __name__=='__main__':
-    mysolution()
+    solution()
