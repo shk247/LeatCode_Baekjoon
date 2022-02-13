@@ -1,0 +1,22 @@
+import sys 
+
+def mysolution():
+    input = sys.stdin.readline
+    n, m = map(int, input().split())
+    board = [list(map(int, input().split())) for _ in range(n)]
+    dp = [[0 for _ in range(n+1)] for _ in range(n+1)]
+    
+    for i in range(1, n+1):
+        for j in range(1, n+1):
+            dp[i][j] = dp[i-1][j] + dp[i][j-1] - dp[i-1][j-1] + board[i-1][j-1]
+            
+    for _ in range(m):
+        x, y, x1, y1 = map(int, input().split())
+        print(dp[x1][y1]-dp[x-1][y1]-dp[x1][y-1]+dp[x-1][y-1])        
+    
+    
+def solution():
+    input = sys.stdin.readline
+
+if __name__=='__main__':
+    mysolution()
